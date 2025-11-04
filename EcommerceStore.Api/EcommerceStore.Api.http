@@ -1,0 +1,13 @@
+@host = http://localhost:5203
+
+GET {{host}}/weatherforecast/
+Accept: application/json
+
+###
+GET {{host}}/api/Products/
+
+###
+GET {{host}}/api/Products/1
+
+###
+

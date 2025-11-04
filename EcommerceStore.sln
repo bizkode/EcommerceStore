@@ -1,0 +1,21 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EcommerceStore.Api", "EcommerceStore.Api\EcommerceStore.Api.csproj", "{F9F124B5-8C7D-4E04-BA35-A41580E48E41}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{4901CE2D-206C-4EB0-A5B3-241CB8FCAEDE}"
+	ProjectSection(SolutionItems) = preProject
+		compose.yaml = compose.yaml
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F9F124B5-8C7D-4E04-BA35-A41580E48E41}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F9F124B5-8C7D-4E04-BA35-A41580E48E41}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F9F124B5-8C7D-4E04-BA35-A41580E48E41}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F9F124B5-8C7D-4E04-BA35-A41580E48E41}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
