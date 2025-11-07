@@ -5,6 +5,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
+builder.Services.AddCors();
 builder.Services.AddOpenApi();
 builder.Services.AddHttpLogging();
 builder.Services.AddEndpointsApiExplorer();
@@ -30,6 +31,6 @@ app.UseHttpsRedirection();
 app.MapGet("/", () =>@"Home Page - Weather Forecast")
     .WithName("GetWeatherForecast");
 app.MapControllers();
-DbInitializer.InitDb(app);
-
+// DbInitializer.InitDb(app);
+app.UseCors(options => options.AllowAnyOrigin().AllowAnyMethod().WithOrigins("https://localhost:3000"));
 app.Run();
