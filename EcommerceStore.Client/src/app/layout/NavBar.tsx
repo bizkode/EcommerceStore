@@ -11,7 +11,7 @@ const NavBar = ({setDarkMode, darkMode}: Props) => {
         <AppBar position="sticky" sx={{width: '100%'}}>
             <Toolbar>
                 <Typography>Ecommerce</Typography>
-                <IconButton onClick={setDarkMode} color="inherit">
+                <IconButton sx={{border: darkMode ? '1px solid white' : '1px solid yellow'}} onClick={setDarkMode} color="inherit">
                     {darkMode ? <DarkMode/> : <LightMode sx={{color:'yellow'}}/> }
                 </IconButton>
             </Toolbar>
