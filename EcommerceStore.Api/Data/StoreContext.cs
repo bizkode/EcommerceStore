@@ -1,5 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
-using EcommerceStore.Api.Entities;
+﻿using EcommerceStore.Api.Entities;
+using Microsoft.EntityFrameworkCore;
+
 namespace EcommerceStore.Api.Data;
 
 public class StoreContext(DbContextOptions options) : DbContext(options)

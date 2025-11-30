@@ -28,7 +28,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.MapGet("/", () =>@"Home Page - Weather Forecast")
+app.MapGet("/", () => @"Home Page - Weather Forecast")
     .WithName("GetWeatherForecast");
 app.MapControllers();
 // DbInitializer.InitDb(app);

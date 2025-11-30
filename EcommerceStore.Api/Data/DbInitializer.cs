@@ -3,14 +3,13 @@ using Microsoft.EntityFrameworkCore;
 
 namespace EcommerceStore.Api.Data;
 
-public class DbInitializer()
+public class DbInitializer
 {
     public static void InitDb(WebApplication app)
     {
         using var scope = app.Services.CreateScope();
         var context = scope.ServiceProvider.GetRequiredService<StoreContext>();
         SeedData(context);
-       
     }
 
     private static void SeedData(StoreContext context)
@@ -223,5 +222,4 @@ public class DbInitializer()
         context.Products.AddRange(products);
         context.SaveChanges();
     }
-
 }

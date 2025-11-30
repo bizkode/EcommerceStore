@@ -6,5 +6,6 @@
     image : string;
     type : string;
     brand: string;
+    quantity: number;
 };
     
