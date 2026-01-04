@@ -1,20 +1,13 @@
-﻿import {useLocation, useParams} from "react-router";
-import type {Product} from "../../app/models/product.ts";
-import {useEffect, useState} from "react";
+﻿import {useParams} from "react-router";
 import {Button, Divider, Grid, Table, TableBody, TableContainer, TableRow, TextField, Typography, TableCell} from "@mui/material";
+import {useFetchProductDetailsQuery} from "./catalog.ts";
 
 const ProductDetails = () => {
     const {id} = useParams();
-    const [product, setProduct] = useState<Product | null>(null);
-    const location = useLocation();
-    const { imageUrl } = location.state;
-    useEffect(()=>{
-        fetch(`http://localhost:5203/api/products/${id}`)
-            .then(res => res.json())
-            .then(data => setProduct(data))
-            .catch(err => console.error(err));
-    }, [id])
-    if(!product){return <div>Loading...</div>}
+    const {data: product, isLoading} = useFetchProductDetailsQuery(id ? +id : 0);
+    if(isLoading || !product){
+        setTimeout(()=>{console.log("Loading and timeout executed")}, 3000);
+        return <div>Loading...</div>}
     const productDetails = [
         {label:'Name', value:product.name},
         {label:'Description', value:product.description},
@@ -29,7 +22,7 @@ const ProductDetails = () => {
             
             <Grid container spacing={6} maxWidth={'lg'} sx={{mx: 'auto'}}>
                 <Grid size={6}>
-                    <img src={imageUrl} alt={product?.name} style={{width: '100%'}} />
+                    <img src={product.image} alt={product?.name} style={{width: '100%'}} />
                 </Grid>
                 <Grid>
                     <Typography variant={"h3"}>{product?.name}</Typography>
