@@ -2,6 +2,7 @@
 import {counterSlice} from "../../features/contact/counterReducer.ts";
 import {useDispatch, useSelector} from "react-redux";
 import {catalogApi} from "../../features/catalog/catalog.ts";
+import {uiSlice} from "../layout/uiSlice.ts";
 
 // export function configureTheStore(){
 //
@@ -11,7 +12,8 @@ import {catalogApi} from "../../features/catalog/catalog.ts";
 export const store = configureStore({
         reducer: {
             [catalogApi.reducerPath]: catalogApi.reducer,
-            counter: counterSlice.reducer
+            counter: counterSlice.reducer,
+            ui: uiSlice.reducer,
         },
     middleware: (getDefaultMiddleware) => 
         getDefaultMiddleware().concat(catalogApi.middleware)

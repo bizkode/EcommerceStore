@@ -1,33 +1,44 @@
 ﻿import {useParams} from "react-router";
-import {Button, Divider, Grid, Table, TableBody, TableContainer, TableRow, TextField, Typography, TableCell} from "@mui/material";
+import {
+    Button,
+    Divider,
+    Grid,
+    Table,
+    TableBody,
+    TableContainer,
+    TableRow,
+    TextField,
+    Typography,
+    TableCell
+} from "@mui/material";
 import {useFetchProductDetailsQuery} from "./catalog.ts";
 
 const ProductDetails = () => {
     const {id} = useParams();
     const {data: product, isLoading} = useFetchProductDetailsQuery(id ? +id : 0);
-    if(isLoading || !product){
-        setTimeout(()=>{console.log("Loading and timeout executed")}, 3000);
-        return <div>Loading...</div>}
+    if (isLoading || !product) {
+        return <div></div>
+    }
     const productDetails = [
-        {label:'Name', value:product.name},
-        {label:'Description', value:product.description},
-        {label:'Type', value:product.type},
-        {label:'Brand', value:product.brand},
-        {label:'Quantity in stock', value:product.quantity},
+        {label: 'Name', value: product.name},
+        {label: 'Description', value: product.description},
+        {label: 'Type', value: product.type},
+        {label: 'Brand', value: product.brand},
+        {label: 'Quantity in stock', value: product.quantity},
     ];
-   
-    
+
+
     return (
         <div>
-            
+
             <Grid container spacing={6} maxWidth={'lg'} sx={{mx: 'auto'}}>
                 <Grid size={6}>
-                    <img src={product.image} alt={product?.name} style={{width: '100%'}} />
+                    <img src={product.image} alt={product?.name} style={{width: '100%'}}/>
                 </Grid>
                 <Grid>
                     <Typography variant={"h3"}>{product?.name}</Typography>
-                    <Divider sx={{mb:2}} />
-                    <Typography variant={"h4"} >${(product?.price / 100).toFixed(2)}</Typography>
+                    <Divider sx={{mb: 2}}/>
+                    <Typography variant={"h4"}>${(product?.price / 100).toFixed(2)}</Typography>
                     <TableContainer>
                         <Table sx={{
                             '&td': {fontSize: '1rem'}
@@ -46,24 +57,24 @@ const ProductDetails = () => {
                     </TableContainer>
                     <Grid container spacing={2} marginTop={3}>
                         <Grid size={6}>
-                            <TextField 
-                                variant={"outlined"} 
+                            <TextField
+                                variant={"outlined"}
                                 type={"number"}
                                 label="Quantity in Cart"
                                 fullWidth={true}
                                 defaultValue={1}
                             />
-                            
+
                         </Grid>
-                        
-                        <Grid size={6} >
-                            <Button 
-                                variant="contained" 
+
+                        <Grid size={6}>
+                            <Button
+                                variant="contained"
                                 color="primary"
                                 size={"large"}
                                 fullWidth={true}
                                 sx={{height: '100%'}}
-                                >Add to Cart</Button>
+                            >Add to Cart</Button>
                         </Grid>
                     </Grid>
                 </Grid>

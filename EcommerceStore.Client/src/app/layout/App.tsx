@@ -1,23 +1,20 @@
-import {useMemo, useState} from "react";
 import {Container, Box, ThemeProvider, CssBaseline} from "@mui/material";
 import NavBar from "./NavBar.tsx";
 import {Outlet} from "react-router";
 import {lightTheme, darkTheme} from "./themes.ts";
+import {useAppSelector} from "../store/store.ts";
+
 
 function App() {
 
-    const [darkMode, setDarkMode] = useState<boolean>(true);
-
-    const mode = useMemo(() => ({
-        toggleDarkMode: () => setDarkMode(!darkMode)
-    }), [darkMode]);
+    const {isDarkMode} = useAppSelector(state => state.ui);
 
     return (
-        <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
-            
+        <ThemeProvider theme={isDarkMode ? darkTheme : lightTheme}>
+
             <CssBaseline/>
-            <NavBar darkMode={darkMode} setDarkMode={mode.toggleDarkMode}/>
-            <Box sx={{ padding: "20px" }}>
+            <NavBar/>
+            <Box sx={{padding: "20px"}}>
                 <Container>
                     <Outlet/>
                 </Container>
