@@ -1,6 +1,6 @@
 @host = http://localhost:5203
 
-GET {{host}}/api/buggy/validation-error
+GET {{host}}/api/buggy/server-error
 
 
 ###

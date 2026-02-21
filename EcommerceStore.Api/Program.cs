@@ -1,4 +1,5 @@
 using EcommerceStore.Api.Data;
+using EcommerceStore.Api.Middleware;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -6,6 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddCors();
+builder.Services.AddTransient<ExceptionMiddleware>();
 builder.Services.AddOpenApi();
 builder.Services.AddHttpLogging();
 builder.Services.AddEndpointsApiExplorer();
@@ -18,7 +20,10 @@ builder.Services.AddDbContext<StoreContext>(opt =>
 
 var app = builder.Build();
 
+
 // Configure the HTTP request pipeline.
+
+app.UseMiddleware<ExceptionMiddleware>();
 if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();

@@ -1,1 +1,2 @@
-GET http://localhost:5203/api/Buggy/bad-request
+
+GET http://localhost:5203/api/Buggy/validation-error
