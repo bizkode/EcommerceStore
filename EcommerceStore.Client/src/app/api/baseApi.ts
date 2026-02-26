@@ -2,6 +2,7 @@
 import type { BaseQueryApi, FetchArgs } from "@reduxjs/toolkit/query";
 import { startLoading, stopLoading } from "../layout/uiSlice.ts";
 import { toast } from "react-toastify";
+import { router } from "../models/routes/Routes.tsx";
 
 const customBaseQuery = fetchBaseQuery({
   baseUrl: "http://localhost:5203/api",
@@ -43,8 +44,8 @@ export const baseQueryWithErrorHandling = async (
           toast.error(responseData.title);
         break;
       case 500:
-        if (typeof responseData === "object" && "title" in responseData)
-          toast.error(responseData.title);
+        if (typeof responseData === "object")
+          router.navigate('/server-error', {state: {error: responseData}});
         break;
 
       default:

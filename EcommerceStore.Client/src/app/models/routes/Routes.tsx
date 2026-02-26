@@ -4,6 +4,7 @@ import Catalog from "../../../features/catalog/Catalog.tsx";
 import AboutPage from "../../../features/about/AboutPage.tsx";
 import ProductDetails from "../../../features/catalog/ProductDetails.tsx";
 import ContactPage from "../../../features/contact/ContactPage.tsx";
+import ServerError from "../../errors/ServerError.tsx";
 
 
 export const router = createBrowserRouter([
@@ -15,7 +16,8 @@ export const router = createBrowserRouter([
             { path: '/catalog', element: <Catalog />},
             { path: '/about', element: <AboutPage />},
             { path: '/catalog/:id', element: <ProductDetails />},
-            { path: '/contact', element: <ContactPage />}
+            { path: '/contact', element: <ContactPage />},
+            { path: '/serve-error', element: <ServerError />}
         ]
     }
     
