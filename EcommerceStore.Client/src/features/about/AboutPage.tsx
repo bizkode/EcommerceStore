@@ -78,7 +78,7 @@ const AboutPage = () => {
         </Button>
         <Button
           variant="contained"
-          onClick={() => trigger500Error()}
+          onClick={()=>trigger500Error()}
         >
           Test 500 Error
         </Button>

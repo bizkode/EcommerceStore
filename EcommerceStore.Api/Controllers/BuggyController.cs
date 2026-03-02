@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System.ComponentModel;
+using Microsoft.AspNetCore.Components.Web;
+using Microsoft.AspNetCore.Mvc;
 
 namespace EcommerceStore.Api.Controllers;
 
@@ -33,6 +35,8 @@ public class BuggyController : BaseApiController
     [HttpGet("server-error")]
     public IActionResult GetServerError()
     {
-        throw new Exception("This is a server error");
+
+         throw new Exception("This is a server exception");   
+       
     }
 }

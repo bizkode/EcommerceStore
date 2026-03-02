@@ -8,7 +8,7 @@ const customBaseQuery = fetchBaseQuery({
   baseUrl: "http://localhost:5203/api",
 });
 
-const sleep = () => new Promise((resolve) => setTimeout(resolve, 1000));
+// const sleep = () => new Promise((resolve) => setTimeout(resolve, 1000));
 type ErrorResponse = string | { title: string } | { errors: string[] };
 
 export const baseQueryWithErrorHandling = async (
@@ -17,7 +17,7 @@ export const baseQueryWithErrorHandling = async (
   extraOptions: object,
 ) => {
   api.dispatch(startLoading());
-  await sleep();
+  // await sleep();
   const result = await customBaseQuery(args, api, extraOptions);
   api.dispatch(stopLoading());
   if (result.error) {
@@ -25,7 +25,9 @@ export const baseQueryWithErrorHandling = async (
       result.error.status === "PARSING_ERROR" && result.error.originalStatus
         ? result.error.originalStatus
         : result.error.status;
+        console.log(result);
     const responseData = result.error.data as ErrorResponse;
+    // const respData = result.error;
     switch (originalStatus) {
       case 400:
         if (typeof responseData === "string")
@@ -41,11 +43,12 @@ export const baseQueryWithErrorHandling = async (
         break;
       case 404:
         if (typeof responseData === "object" && "title" in responseData)
-          toast.error(responseData.title);
+          router.navigate('/not-found', {state: {error: responseData}});  
         break;
       case 500:
         if (typeof responseData === "object")
-          router.navigate('/server-error', {state: {error: responseData}});
+          router.navigate('/server-error', {state: {error: responseData}});  
+      
         break;
 
       default:
